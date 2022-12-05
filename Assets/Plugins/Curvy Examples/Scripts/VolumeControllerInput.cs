@@ -58,7 +58,7 @@ namespace FluffyUnderware.Curvy.Examples
 
                 if (rotatedTransform)
                 {
-                    float yTarget = Mathf.Lerp(-90f, 90f, (input.x + 1f) / 2f);
+                    float yTarget = Mathf.Lerp(-25f, 25f, (input.x + 1f) / 2f);
                     rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
                 }
             }

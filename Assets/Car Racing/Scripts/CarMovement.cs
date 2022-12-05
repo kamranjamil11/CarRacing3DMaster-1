@@ -11,13 +11,15 @@ public class CarMovement : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+   
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
-            main_Camera.enabled = false;
-            main_Camera.GetComponent<ChaseCam>().enabled = false;
+
+            main_Camera.gameObject.SetActive(false);
+            //main_Camera.GetComponent<ChaseCam>().enabled = false;
+            endPoint_Camera.gameObject.SetActive(true);
         }
     }
 }
