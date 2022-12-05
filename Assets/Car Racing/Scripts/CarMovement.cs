@@ -16,9 +16,9 @@ public class CarMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
-
+            print("Camera_Change");
             main_Camera.gameObject.SetActive(false);
-            //main_Camera.GetComponent<ChaseCam>().enabled = false;
+            main_Camera.GetComponent<ChaseCam>().enabled = false;
             endPoint_Camera.gameObject.SetActive(true);
         }
     }
