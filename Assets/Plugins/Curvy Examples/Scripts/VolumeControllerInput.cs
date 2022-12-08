@@ -20,8 +20,7 @@ namespace FluffyUnderware.Curvy.Examples
         public float maxSpeed = 40f;
         public float accelerationForward = 20f;
         public float accelerationBackward = 40f;
-        private bool mGameOver;
-
+        private bool mGameOver;      
         private void Awake()
         {
             if (!volumeController)
@@ -38,9 +37,9 @@ namespace FluffyUnderware.Curvy.Examples
 
         private void ResetController()
         {
-            volumeController.Speed = 0;
-            volumeController.RelativePosition = 0;
-            volumeController.CrossRelativePosition = 0;
+            volumeController.Speed = 0;       
+            volumeController.RelativePosition = volumeController.RelativePosition-0.02f;
+             volumeController.CrossRelativePosition = 0;
         }
 
         private void Update()
@@ -73,12 +72,15 @@ namespace FluffyUnderware.Curvy.Examples
 
         public void OnTriggerEnter(Collider other)
         {
-            if (mGameOver == false)
+            if (other.gameObject.CompareTag("Hurdle"))
             {
-                explosionEmitter.Emit(200);
-                volumeController.Pause();
-                mGameOver = true;
-                Invoke("StartOver", 1);
+                if (mGameOver == false)
+                {
+                    explosionEmitter.Emit(200);
+                    volumeController.Pause();
+                    mGameOver = true;
+                    Invoke("StartOver", 1);
+                }
             }
         }
 

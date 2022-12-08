@@ -451,6 +451,7 @@ namespace FluffyUnderware.Curvy.Controllers
                 switch (PositionMode)
                 {
                     case CurvyPositionMode.Relative:
+                        print("Pos");
                         result = RelativePosition;
                         break;
                     case CurvyPositionMode.WorldUnits:
@@ -466,6 +467,7 @@ namespace FluffyUnderware.Curvy.Controllers
                 switch (PositionMode)
                 {
                     case CurvyPositionMode.Relative:
+                        print("Pos");
                         RelativePosition = value;
                         break;
                     case CurvyPositionMode.WorldUnits:

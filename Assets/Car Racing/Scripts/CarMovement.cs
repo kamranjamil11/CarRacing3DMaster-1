@@ -21,5 +21,17 @@ public class CarMovement : MonoBehaviour
             main_Camera.GetComponent<ChaseCam>().enabled = false;
             endPoint_Camera.gameObject.SetActive(true);
         }
+        else
+            if (other.gameObject.CompareTag("Finish"))
+        {         
+            other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.forward*3);
+            GameObject tc = other.transform.parent.parent.gameObject;
+            for (int i = 0; i < tc.transform.childCount; i++)
+            {
+                tc.transform.GetChild(i).GetChild(0).GetComponent<Rigidbody>().AddForce(Vector3.forward *2f);
+                tc.transform.GetChild(i).GetChild(0).GetComponent<Rigidbody>().AddForce(Vector3.up *0.2f);
+            }
+          
+        }
     }
 }
