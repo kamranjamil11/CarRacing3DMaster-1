@@ -1,0 +1,157 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 02.02.2015 01:03:25
+
+newmtl 5bc83bb1_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\5bc83bb1.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\5bc83bb1.dds
+
+newmtl edb8ed67_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\edb8ed67.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\edb8ed67.dds
+
+newmtl eb43421a_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\eb43421a.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\eb43421a.dds
+
+newmtl c2a8e19d_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\c2a8e19d.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\c2a8e19d.dds
+
+newmtl b5fac736_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\b5fac736.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\b5fac736.dds
+
+newmtl 5564bdf1_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\5564bdf1.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\5564bdf1.dds
+
+newmtl ca3bbfe2_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\ca3bbfe2.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\ca3bbfe2.dds
+
+newmtl 7cb656ea_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\7cb656ea.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\7cb656ea.dds
+
+newmtl Material__1824
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\Downloads\3DM-fafsdown\_Ripper\02.02.2015_00.59.04\Textures\Tex_0015.dds
+	map_Kd D:\My_dokuments\Downloads\3DM-fafsdown\_Ripper\02.02.2015_00.59.04\Textures\Tex_0015.dds
+
+newmtl Material__1820
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\867ab269.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\867ab269.dds
+
+newmtl 62f245b6_dds
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.700000 0.700000 0.700000
+	Kd 0.700000 0.700000 0.700000
+	Ks 0.100000 0.100000 0.100000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\62f245b6.dds
+	map_Kd D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\62f245b6.dds
+	map_d D:\My_dokuments\3DReaperDX\3DM-fafsdown\Textures\62f245b6.dds
