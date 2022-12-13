@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using FluffyUnderware.DevTools;
 using FluffyUnderware.Curvy.Examples;
+using DG.Tweening;
 public class CarMovement : MonoBehaviour
 {
     public Camera main_Camera,endPoint_Camera;
+    public VolumeControllerInput VL_Input;
+    public GameObject rt;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +19,16 @@ public class CarMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
+            VL_Input.mGameOver = true;
             print("Camera_Change");
-            main_Camera.gameObject.SetActive(false);
+            //main_Camera.gameObject.SetActive(false);
+            //main_Camera.GetComponent<ChaseCam>().enabled = false;
+            //endPoint_Camera.gameObject.SetActive(true);
             main_Camera.GetComponent<ChaseCam>().enabled = false;
-            endPoint_Camera.gameObject.SetActive(true);
+            main_Camera.gameObject.transform.DOLocalMove(new Vector3(transform.position.x, transform.position.y+30f, transform.position.z), 2f).OnComplete(delegate 
+            {
+
+            });
         }
         else
             if (other.gameObject.CompareTag("Finish"))

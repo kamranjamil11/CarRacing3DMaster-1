@@ -236,7 +236,6 @@ namespace FluffyUnderware.Curvy.Controllers
 #endif
             return Volume.Module.Generator.transform.TransformDirection(VolumeData.InterpolateVolumeUp(tf, CrossRelativePosition));
         }
-
         protected override void Advance(float speed, float deltaTime)
         {
             float tf = RelativePosition;
@@ -247,7 +246,6 @@ namespace FluffyUnderware.Curvy.Controllers
             MovementDirection = direction;
             RelativePosition = tf;
         }
-
         override protected void SimulateAdvance(ref float tf, ref MovementDirection curyDirection, float speed, float deltaTime)
         {
 #if CURVY_SANITY_CHECKS

@@ -8,6 +8,7 @@
 using UnityEngine;
 using System.Collections;
 using FluffyUnderware.Curvy.Controllers;
+using UnityEngine.UI;
 
 namespace FluffyUnderware.Curvy.Examples
 {
@@ -20,7 +21,10 @@ namespace FluffyUnderware.Curvy.Examples
         public float maxSpeed = 40f;
         public float accelerationForward = 20f;
         public float accelerationBackward = 40f;
-        private bool mGameOver;      
+        public bool mGameOver;
+        private bool IsPlay;
+        public Text text_s;
+        public Vector3 mov_Val;
         private void Awake()
         {
             if (!volumeController)
@@ -44,31 +48,53 @@ namespace FluffyUnderware.Curvy.Examples
 
         private void Update()
         {
-            if (volumeController && !mGameOver)
+            if (!mGameOver)
             {
-                if (volumeController.PlayState != CurvyController.CurvyControllerState.Playing) volumeController.Play();
-                Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
-                float speedRaw = volumeController.Speed + input.y * Time.deltaTime * Mathf.Lerp(accelerationBackward, accelerationForward, (input.y + 1f) / 2f);
-
-                volumeController.Speed = Mathf.Clamp(speedRaw, 0f, maxSpeed);
-                volumeController.CrossRelativePosition += AngularVelocity * Mathf.Clamp(volumeController.Speed / 10f, 0.2f, 1f) * input.x * Time.deltaTime;
-
-
-                if (rotatedTransform)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    float yTarget = Mathf.Lerp(-25f, 25f, (input.x + 1f) / 2f);
-                    rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
+                    IsPlay = true;
+                    mov_Val = new Vector3(0, 1, 0);
+                    volumeController.Speed = 40f;
+                }
+                if (IsPlay)
+                {
+                    if (volumeController /*&& !mGameOver*/)
+                    {
+                        if (volumeController.PlayState != CurvyController.CurvyControllerState.Playing) volumeController.Play();
+                        Vector2 input = mov_Val; //new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+                                                 // text_s.text = "Playing";
+                        print("input " + input);
+                        float speedRaw = volumeController.Speed + input.y * Time.deltaTime * Mathf.Lerp(accelerationBackward, accelerationForward, (input.y + 1f) / 2f);
+
+                        volumeController.Speed = Mathf.Clamp(speedRaw, 0f, maxSpeed);
+                        volumeController.CrossRelativePosition += AngularVelocity * Mathf.Clamp(volumeController.Speed / 10f, 0.2f, 1f) * input.x * Time.deltaTime;
+
+
+                        if (rotatedTransform)
+                        {
+                            float yTarget = Mathf.Lerp(-25f, 25f, (input.x + 1f) / 2f);
+                            rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
+                        }
+                    }
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    IsPlay = false;
+                    mov_Val = new Vector3(0, 0, 0);
+                    StartCoroutine(SpeedTest());
                 }
             }
         }
 
-        public void OnCollisionEnter(Collision collision)
+        IEnumerator SpeedTest()
         {
-
+            yield return new WaitForSeconds(0.01f);
+            if (volumeController.Speed > 0&& mov_Val.y!=1)
+            {
+                volumeController.Speed -= 0.5f;
+                StartCoroutine(SpeedTest());
+            }
         }
-
-
 
         public void OnTriggerEnter(Collider other)
         {
