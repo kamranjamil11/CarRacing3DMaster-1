@@ -17,8 +17,9 @@ public class AICarMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("MainCamera"))
         {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;           
+                    
         }
        
     }
