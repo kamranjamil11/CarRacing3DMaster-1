@@ -1,62 +1,164 @@
 fileFormatVersion: 2
 guid: 522a332726338424a9a7da7796ce3440
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: car-parsche-sport-green_Cube.867_carmaterial_green
-    100004: car-parsche-sport-green_Cube.867_lights
-    100006: car-parsche-sport-green_Cube.867_lights.orange
-    100008: car-parsche-sport-green_Cube.867_lights.red
-    100010: car-parsche-sport-green_Cube.867_metal
-    100012: car-parsche-sport-green_Cube.867_metal.black
-    100014: car-parsche-sport-green_Cube.867_tires
-    100016: car-parsche-sport-green_Cube.867_windows
-    400000: //RootNode
-    400002: car-parsche-sport-green_Cube.867_carmaterial_green
-    400004: car-parsche-sport-green_Cube.867_lights
-    400006: car-parsche-sport-green_Cube.867_lights.orange
-    400008: car-parsche-sport-green_Cube.867_lights.red
-    400010: car-parsche-sport-green_Cube.867_metal
-    400012: car-parsche-sport-green_Cube.867_metal.black
-    400014: car-parsche-sport-green_Cube.867_tires
-    400016: car-parsche-sport-green_Cube.867_windows
-    2100000: carmaterial_green
-    2100002: lights
-    2100004: lights.orange
-    2100006: lights.red
-    2100008: metal
-    2100010: metal.black
-    2100012: tires
-    2100014: windows
-    2300000: car-parsche-sport-green_Cube.867_carmaterial_green
-    2300002: car-parsche-sport-green_Cube.867_lights
-    2300004: car-parsche-sport-green_Cube.867_lights.orange
-    2300006: car-parsche-sport-green_Cube.867_lights.red
-    2300008: car-parsche-sport-green_Cube.867_metal
-    2300010: car-parsche-sport-green_Cube.867_metal.black
-    2300012: car-parsche-sport-green_Cube.867_tires
-    2300014: car-parsche-sport-green_Cube.867_windows
-    3300000: car-parsche-sport-green_Cube.867_carmaterial_green
-    3300002: car-parsche-sport-green_Cube.867_lights
-    3300004: car-parsche-sport-green_Cube.867_lights.orange
-    3300006: car-parsche-sport-green_Cube.867_lights.red
-    3300008: car-parsche-sport-green_Cube.867_metal
-    3300010: car-parsche-sport-green_Cube.867_metal.black
-    3300012: car-parsche-sport-green_Cube.867_tires
-    3300014: car-parsche-sport-green_Cube.867_windows
-    4300000: car-parsche-sport-green_Cube.867_carmaterial_green
-    4300002: car-parsche-sport-green_Cube.867_lights
-    4300004: car-parsche-sport-green_Cube.867_lights.orange
-    4300006: car-parsche-sport-green_Cube.867_lights.red
-    4300008: car-parsche-sport-green_Cube.867_metal
-    4300010: car-parsche-sport-green_Cube.867_metal.black
-    4300012: car-parsche-sport-green_Cube.867_tires
-    4300014: car-parsche-sport-green_Cube.867_windows
-    2186277476908879412: ImportLogs
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: car-parsche-sport-green_Cube.867_carmaterial_green
+  - first:
+      1: 100004
+    second: car-parsche-sport-green_Cube.867_lights
+  - first:
+      1: 100006
+    second: car-parsche-sport-green_Cube.867_lights.orange
+  - first:
+      1: 100008
+    second: car-parsche-sport-green_Cube.867_lights.red
+  - first:
+      1: 100010
+    second: car-parsche-sport-green_Cube.867_metal
+  - first:
+      1: 100012
+    second: car-parsche-sport-green_Cube.867_metal.black
+  - first:
+      1: 100014
+    second: car-parsche-sport-green_Cube.867_tires
+  - first:
+      1: 100016
+    second: car-parsche-sport-green_Cube.867_windows
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: car-parsche-sport-green_Cube.867_carmaterial_green
+  - first:
+      4: 400004
+    second: car-parsche-sport-green_Cube.867_lights
+  - first:
+      4: 400006
+    second: car-parsche-sport-green_Cube.867_lights.orange
+  - first:
+      4: 400008
+    second: car-parsche-sport-green_Cube.867_lights.red
+  - first:
+      4: 400010
+    second: car-parsche-sport-green_Cube.867_metal
+  - first:
+      4: 400012
+    second: car-parsche-sport-green_Cube.867_metal.black
+  - first:
+      4: 400014
+    second: car-parsche-sport-green_Cube.867_tires
+  - first:
+      4: 400016
+    second: car-parsche-sport-green_Cube.867_windows
+  - first:
+      21: 2100000
+    second: carmaterial_green
+  - first:
+      21: 2100002
+    second: lights
+  - first:
+      21: 2100004
+    second: lights.orange
+  - first:
+      21: 2100006
+    second: lights.red
+  - first:
+      21: 2100008
+    second: metal
+  - first:
+      21: 2100010
+    second: metal.black
+  - first:
+      21: 2100012
+    second: tires
+  - first:
+      21: 2100014
+    second: windows
+  - first:
+      23: 2300000
+    second: car-parsche-sport-green_Cube.867_carmaterial_green
+  - first:
+      23: 2300002
+    second: car-parsche-sport-green_Cube.867_lights
+  - first:
+      23: 2300004
+    second: car-parsche-sport-green_Cube.867_lights.orange
+  - first:
+      23: 2300006
+    second: car-parsche-sport-green_Cube.867_lights.red
+  - first:
+      23: 2300008
+    second: car-parsche-sport-green_Cube.867_metal
+  - first:
+      23: 2300010
+    second: car-parsche-sport-green_Cube.867_metal.black
+  - first:
+      23: 2300012
+    second: car-parsche-sport-green_Cube.867_tires
+  - first:
+      23: 2300014
+    second: car-parsche-sport-green_Cube.867_windows
+  - first:
+      33: 3300000
+    second: car-parsche-sport-green_Cube.867_carmaterial_green
+  - first:
+      33: 3300002
+    second: car-parsche-sport-green_Cube.867_lights
+  - first:
+      33: 3300004
+    second: car-parsche-sport-green_Cube.867_lights.orange
+  - first:
+      33: 3300006
+    second: car-parsche-sport-green_Cube.867_lights.red
+  - first:
+      33: 3300008
+    second: car-parsche-sport-green_Cube.867_metal
+  - first:
+      33: 3300010
+    second: car-parsche-sport-green_Cube.867_metal.black
+  - first:
+      33: 3300012
+    second: car-parsche-sport-green_Cube.867_tires
+  - first:
+      33: 3300014
+    second: car-parsche-sport-green_Cube.867_windows
+  - first:
+      43: 4300000
+    second: car-parsche-sport-green_Cube.867_carmaterial_green
+  - first:
+      43: 4300002
+    second: car-parsche-sport-green_Cube.867_lights
+  - first:
+      43: 4300004
+    second: car-parsche-sport-green_Cube.867_lights.orange
+  - first:
+      43: 4300006
+    second: car-parsche-sport-green_Cube.867_lights.red
+  - first:
+      43: 4300008
+    second: car-parsche-sport-green_Cube.867_metal
+  - first:
+      43: 4300010
+    second: car-parsche-sport-green_Cube.867_metal.black
+  - first:
+      43: 4300012
+    second: car-parsche-sport-green_Cube.867_tires
+  - first:
+      43: 4300014
+    second: car-parsche-sport-green_Cube.867_windows
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -86,23 +188,33 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -110,10 +222,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -123,14 +238,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

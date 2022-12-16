@@ -28,6 +28,7 @@ using UnityEngine.Assertions;
 
 namespace FluffyUnderware.Curvy
 {
+    
     /// <summary>
     /// Class covering a Curvy Spline Segment / ControlPoint
     /// </summary>

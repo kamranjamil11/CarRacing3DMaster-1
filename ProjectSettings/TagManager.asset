@@ -8,6 +8,7 @@ TagManager:
   - PlayerCar
   - AICarCollider
   - Hurdle
+  - TrackPoint
   layers:
   - Default
   - TransparentFX
