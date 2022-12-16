@@ -13,5 +13,14 @@ public class AICarMovement : MonoBehaviour
     {
         sp_Controller.Speed = sp_Controller.Speed+ speed;
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("MainCamera"))
+        {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;           
+        }
+       
+    }
 }
 //public enum CarNum { car1, car2, car3, car4 };

@@ -27,8 +27,9 @@ public class TrackPoint : MonoBehaviour
         //}
         if (other.gameObject.CompareTag("AICarCollider"))
         {
-            AICarMovement car = other.GetComponent<AICarMovement>();          
-            car.SpeedExceed(aicars_Speed[car.car_Id]);              
+           // print("Collide");
+            AICarMovement car = other.GetComponent<AICarMovement>();
+            car.SpeedExceed(aicars_Speed[car.car_Id]);
         }
     }
 }

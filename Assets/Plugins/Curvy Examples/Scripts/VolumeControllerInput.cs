@@ -166,7 +166,7 @@ namespace FluffyUnderware.Curvy.Examples
             yield return new WaitForSeconds(0.01f);
             if (volumeController.Speed > 0&& mov_Val.y!=1)
             {
-                volumeController.Speed -= 0.5f;
+                volumeController.Speed -= 1f;
                 StartCoroutine(SpeedTest());
             }
         }
