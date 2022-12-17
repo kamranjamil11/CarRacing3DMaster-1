@@ -9,6 +9,7 @@ TagManager:
   - AICarCollider
   - Hurdle
   - TrackPoint
+  - Track
   layers:
   - Default
   - TransparentFX

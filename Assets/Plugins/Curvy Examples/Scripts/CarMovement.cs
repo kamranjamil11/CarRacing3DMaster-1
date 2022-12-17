@@ -45,12 +45,25 @@ namespace FluffyUnderware.Curvy.Examples
                         tc.transform.GetChild(i).GetChild(0).GetComponent<Rigidbody>().AddForce(Vector3.up * 0.2f);
                     }
                 }
-                if (other.gameObject.CompareTag("Hurdle"))
+            else if (other.gameObject.CompareTag("Track"))
+            {
+               // print("Track");
+                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+            if (other.gameObject.CompareTag("Hurdle"))
                 {
-                 print("Collide");
+                // print("Collide");
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     VL_Input.Trigger();
                 }           
+        }
+        private void OnCollisionExit(Collision other)
+        {
+             if (other.gameObject.CompareTag("Track"))
+            {
+               // print("Track");
+                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            }
         }
     }
 }

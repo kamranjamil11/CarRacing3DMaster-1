@@ -53,41 +53,47 @@ namespace FluffyUnderware.Curvy.Examples
         public void UpAndDown(bool isTrue) 
         {
             start_Pos = Input.mousePosition;
-            if (isTrue)
+            if (!mGameOver)
             {
-                start_Pos = Input.mousePosition;
-                IsPlay = true;
-                mov_Val = new Vector3(0, 1, 0);
-                volumeController.Speed = 30f;
-                isStop = false;
-              
-                //  print("Down");
-            }
-            else
-            {
-                IsPlay = false;
-                mov_Val = new Vector3(0, 0, 0);
-                X_POS = 0f;
-                isStop = true;
-                StartCoroutine(SpeedTest());
-               // print("Up");
+                if (isTrue)
+                {
+                    start_Pos = Input.mousePosition;
+                    IsPlay = true;
+                    mov_Val = new Vector3(0, 1, 0);
+                    volumeController.Speed = 30f;
+                    isStop = false;
+
+                    //  print("Down");
+                }
+                else
+                {
+                    IsPlay = false;
+                    mov_Val = new Vector3(0, 0, 0);
+                    X_POS = 0f;
+                    isStop = true;
+                    StartCoroutine(SpeedTest());
+                    // print("Up");
+                }
             }
 
         }       
         public void Drag()
         {
-            if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
-            {
-               // print("right_Drag");
-                 X_POS = 0.5f;
-                StartCoroutine(RotationEnd(true));
-            }
-            else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
-            {
-                 X_POS = -0.5f;
-                StartCoroutine(RotationEnd(false));
-                // print("Left_Drag");
-            }
+           // if (!mGameOver)
+           // {
+                if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
+                {
+                    // print("right_Drag");
+                    X_POS = 0.5f;
+                    StartCoroutine(RotationEnd(true));
+                }
+                else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
+                {
+                    X_POS = -0.5f;
+                    StartCoroutine(RotationEnd(false));
+                    // print("Left_Drag");
+                }
+           // }
         }
        
         IEnumerator RotationEnd(bool isTrue)
