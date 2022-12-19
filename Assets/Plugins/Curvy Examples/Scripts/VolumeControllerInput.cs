@@ -30,13 +30,14 @@ namespace FluffyUnderware.Curvy.Examples
         public float pixetDistToDetect;
         public bool mGameOver;
         public static bool isStop;
-        private bool IsPlay;
+        public bool IsPlay;
         public Text text_s;
         public Vector3 mov_Val;
         public Vector3 start_Pos;
         public Vector3 rot;
         bool isLeftRot, isRightRot;
         public CarMovement car_Movement;
+        public AudioSource car_Sound;
         private void Awake()
         {
             if (!volumeController)
@@ -72,10 +73,14 @@ namespace FluffyUnderware.Curvy.Examples
                     X_POS = 0f;
                     isStop = true;
                     StartCoroutine(SpeedTest());
-                    // print("Up");
+                     //print("Up");
                 }
             }
-
+            if (GameManager.instance.paus_Panel.activeSelf)
+            {
+                car_Sound.enabled = true;
+                GameManager.instance.PausePanel();
+            }
         }       
         public void Drag()
         {
@@ -163,8 +168,11 @@ namespace FluffyUnderware.Curvy.Examples
                        // float yTarget = Mathf.Lerp(-25f, 25f, (rot.x + 1f) / 2f);
                        // rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
                     }
+                    GameManager.instance.level_Value.fillAmount = volumeController.RelativePosition;
+                   
                 }
             }
+            GameManager.instance.speep_Text.text = volumeController.Speed.ToString("F0");
         }
 
         IEnumerator SpeedTest()

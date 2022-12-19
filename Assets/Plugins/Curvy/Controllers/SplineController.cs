@@ -130,7 +130,6 @@ namespace FluffyUnderware.Curvy.Controllers
         [SerializeField]
         protected CurvySplineMoveEvent m_OnSwitch = new CurvySplineMoveEvent();
 
-
         #endregion
 
         #region ### Public Properties ###

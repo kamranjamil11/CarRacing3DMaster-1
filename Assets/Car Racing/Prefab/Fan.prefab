@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197294238194422976}
   - component: {fileID: 6751523663447759920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject (1)
   m_TagString: Hurdle
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265175591784440551}
   - component: {fileID: 7746142132946341259}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Hurdle
   m_Icon: {fileID: 0}
