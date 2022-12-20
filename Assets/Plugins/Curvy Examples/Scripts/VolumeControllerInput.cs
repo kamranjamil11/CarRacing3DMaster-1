@@ -78,7 +78,7 @@ namespace FluffyUnderware.Curvy.Examples
             }
             if (GameManager.instance.paus_Panel.activeSelf)
             {
-                car_Sound.enabled = true;
+               // car_Sound.enabled = true;
                 GameManager.instance.PausePanel();
             }
         }       
@@ -89,12 +89,12 @@ namespace FluffyUnderware.Curvy.Examples
                 if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
                 {
                     // print("right_Drag");
-                    X_POS = 0.5f;
+                    X_POS = 1f;
                     StartCoroutine(RotationEnd(true));
                 }
                 else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
                 {
-                    X_POS = -0.5f;
+                    X_POS = -1f;
                     StartCoroutine(RotationEnd(false));
                     // print("Left_Drag");
                 }
@@ -164,14 +164,15 @@ namespace FluffyUnderware.Curvy.Examples
                     volumeController.CrossRelativePosition += AngularVelocity * Mathf.Clamp(volumeController.Speed / 10f, 0.2f, 1f) * input.x * Time.deltaTime;
                     if (rotatedTransform)
                     {
-                        //  print("input " + input);
-                       // float yTarget = Mathf.Lerp(-25f, 25f, (rot.x + 1f) / 2f);
-                       // rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
+                        //print("input " + input);
+                        //float yTarget = Mathf.Lerp(-50f, 50f, (rot.x + 1f) / 2f);
+                        //rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
                     }
-                    GameManager.instance.level_Value.fillAmount = volumeController.RelativePosition;
+                    
                    
                 }
             }
+            GameManager.instance.level_Value.fillAmount = volumeController.RelativePosition;
             GameManager.instance.speep_Text.text = volumeController.Speed.ToString("F0");
         }
 

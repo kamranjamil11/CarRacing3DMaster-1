@@ -1131,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1693fd3d4e0c9cc498dbeb63b6329607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pos_Text: {fileID: 492324245}
   main_Camera: {fileID: 1375666204}
   endPoint_Camera: {fileID: 2108116566}
   VL_Input: {fileID: 1998100737}
@@ -2679,7 +2680,7 @@ GameObject:
   - component: {fileID: 44572013}
   - component: {fileID: 44572012}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TotalCash_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3123,8 +3124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music_Audio: {fileID: 927732890}
+  level_Text: {fileID: 1067619511}
   speep_Text: {fileID: 1469151500}
-  totalCash_Text: {fileID: 0}
+  level_Cash: {fileID: 158061035}
+  totalCash_Text:
+  - {fileID: 619061481}
+  - {fileID: 44572012}
   level_Value: {fileID: 1718617721}
   player_Controller: {fileID: 1998100737}
   next_Panel: {fileID: 1631697771}
@@ -3145,7 +3150,7 @@ MonoBehaviour:
   - name: Level1
     level: {fileID: 2066367635}
     player_Path: {fileID: 1244766098}
-    cash: 
+    cash: 64000000500000003200000014000000
     ai_Cars_Path:
     - {fileID: 1821305450}
     - {fileID: 1882003585}
@@ -3154,7 +3159,7 @@ MonoBehaviour:
   - name: Level2
     level: {fileID: 1099774807}
     player_Path: {fileID: 1058670301}
-    cash: 
+    cash: 64000000500000003200000014000000
     ai_Cars_Path:
     - {fileID: 208184311}
     - {fileID: 124570615}
@@ -3163,13 +3168,14 @@ MonoBehaviour:
   - name: Level3
     level: {fileID: 1987597055}
     player_Path: {fileID: 307160315}
-    cash: 
+    cash: 64000000500000003200000014000000
     ai_Cars_Path:
     - {fileID: 738346554}
     - {fileID: 844073407}
     - {fileID: 1306888680}
     - {fileID: 470452524}
   isMusic: 0
+  isComplete: 0
 --- !u!4 &65523905
 Transform:
   m_ObjectHideFlags: 0
@@ -4503,7 +4509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.892334, y: 1.7843933}
+  m_AnchoredPosition: {x: -0.892334, y: 1.7844238}
   m_SizeDelta: {x: 23.197, y: 28.5502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96938747
@@ -7604,7 +7610,7 @@ GameObject:
   - component: {fileID: 158061036}
   - component: {fileID: 158061035}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LevelCash_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14102,7 +14108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209442598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 71.7}
+  m_LocalPosition: {x: 1.78, y: 0, z: 71.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1821305451}
@@ -27301,7 +27307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &462689335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28946,7 +28952,7 @@ GameObject:
   - component: {fileID: 492324246}
   - component: {fileID: 492324245}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Pos_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34184,6 +34190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1693fd3d4e0c9cc498dbeb63b6329607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pos_Text: {fileID: 0}
   main_Camera: {fileID: 1375666204}
   endPoint_Camera: {fileID: 2108116566}
   VL_Input: {fileID: 1998100737}
@@ -35671,7 +35678,7 @@ GameObject:
   - component: {fileID: 619061482}
   - component: {fileID: 619061481}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TotalCash_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35729,7 +35736,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 0
 --- !u!222 &619061482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40794,7 +40801,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ddce4f8271cfa449bfabed233b86b9b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.18
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddce4f8271cfa449bfabed233b86b9b,
         type: 3}
@@ -40804,7 +40811,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ddce4f8271cfa449bfabed233b86b9b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.83
+      value: -2.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddce4f8271cfa449bfabed233b86b9b,
         type: 3}
@@ -40936,6 +40943,11 @@ MonoBehaviour:
   - {fileID: 1883853613}
   - {fileID: 1130655476}
   - {fileID: 691232203}
+  opposit_Cars:
+  - {fileID: 869374343}
+  - {fileID: 1533511837}
+  - {fileID: 893644612}
+  - {fileID: 1998100735}
 --- !u!65 &705081968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49422,7 +49434,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_Position: 0
   m_MoveMode: 1
-  m_Speed: 50
+  m_Speed: 40
   m_Direction: 0
   m_Clamping: 0
   m_PlayAutomatically: 1
@@ -59800,7 +59812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.892334, y: -45.05945}
+  m_AnchoredPosition: {x: 0.892334, y: -65.6}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067619511
@@ -59829,7 +59841,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 28
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -65669,7 +65681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170919449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -829.6, y: 0.3, z: 600}
+  m_LocalPosition: {x: -836, y: 0.3, z: 600}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1044173173}
@@ -68643,7 +68655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226962277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -845.6, y: 0.3, z: 600.4}
+  m_LocalPosition: {x: -820.02, y: 0.3, z: 599.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1882003586}
@@ -76425,8 +76437,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375666200}
-  m_LocalRotation: {x: 0.18479452, y: 0.009292699, z: -0.0017474149, w: 0.9827317}
-  m_LocalPosition: {x: -0.52509075, y: 9.226792, z: 20.680485}
+  m_LocalRotation: {x: 0.18479408, y: 0.009470841, z: -0.0017809117, w: 0.98273003}
+  m_LocalPosition: {x: -0.52848345, y: 9.226789, z: 20.680555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1742575540}
@@ -76447,7 +76459,7 @@ MonoBehaviour:
   LookAt: {fileID: 1388412541}
   MoveTo: {fileID: 2033279866}
   RollTo: {fileID: 0}
-  ChaseTime: 0.1
+  ChaseTime: 0
 --- !u!1 &1375674982
 GameObject:
   m_ObjectHideFlags: 0
@@ -77862,7 +77874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.892334, y: 1.7843933}
+  m_AnchoredPosition: {x: -0.892334, y: 1.7844238}
   m_SizeDelta: {x: 23.197, y: 28.5502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1397607020
@@ -78524,7 +78536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.892334, y: 1.7843933}
+  m_AnchoredPosition: {x: -0.892334, y: 1.7844238}
   m_SizeDelta: {x: 23.197, y: 28.5502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419484746
@@ -83662,7 +83674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524832667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 45.7}
+  m_LocalPosition: {x: 1.56, y: 0, z: 45.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1821305451}
@@ -84013,7 +84025,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_Position: 0
   m_MoveMode: 1
-  m_Speed: 55
+  m_Speed: 50
   m_Direction: 0
   m_Clamping: 0
   m_PlayAutomatically: 1
@@ -85381,7 +85393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566109048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -86815,7 +86827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1590334427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87603,7 +87615,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1600551509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87625,6 +87637,11 @@ MonoBehaviour:
   - {fileID: 1369514930}
   - {fileID: 1987678063}
   - {fileID: 963163236}
+  opposit_Cars:
+  - {fileID: 1655736797}
+  - {fileID: 869374343}
+  - {fileID: 1533511837}
+  - {fileID: 1998100735}
 --- !u!4 &1602352047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6013710164691642633, guid: 1c3699c6ce807444fbf28482ca38b8b9,
@@ -88912,7 +88929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.892334, y: 1.7843933}
+  m_AnchoredPosition: {x: -0.892334, y: 1.7844238}
   m_SizeDelta: {x: 23.197, y: 28.5502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1632479036 stripped
@@ -90051,7 +90068,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_Position: 0
   m_MoveMode: 1
-  m_Speed: 40
+  m_Speed: 55
   m_Direction: 0
   m_Clamping: 0
   m_PlayAutomatically: 1
@@ -91664,7 +91681,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &1689076317
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92284,7 +92301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699805125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -829.6, y: 0.3, z: 602.9}
+  m_LocalPosition: {x: -831.47, y: 0.3, z: 602.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1244766099}
@@ -96096,7 +96113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786136312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -820.8, y: 0.3, z: 604.4}
+  m_LocalPosition: {x: -826.15, y: 0.3, z: 606.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1821305451}
@@ -98035,7 +98052,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1813397160}
   serializedVersion: 7
   lengthInSec: 0.5
-  simulationSpeed: 1
+  simulationSpeed: 7
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -98162,7 +98179,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -98216,7 +98233,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.047058824}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.15686275}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -107736,6 +107753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1693fd3d4e0c9cc498dbeb63b6329607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pos_Text: {fileID: 0}
   main_Camera: {fileID: 1375666204}
   endPoint_Camera: {fileID: 2108116566}
   VL_Input: {fileID: 1998100737}
@@ -108419,7 +108437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1951125676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109818,7 +109836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972960393}
   m_LocalRotation: {x: 0.0415677, y: 0.32381934, z: -0.0000000037252899, w: 0.94520545}
-  m_LocalPosition: {x: 3.731, y: -3.711, z: 6.858}
+  m_LocalPosition: {x: 3.69, y: -3.71, z: 6.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 879283970}
@@ -109898,8 +109916,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972960393}
   serializedVersion: 7
-  lengthInSec: 5
-  simulationSpeed: 1
+  lengthInSec: 0.5
+  simulationSpeed: 7
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -110026,7 +110044,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -110080,7 +110098,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.047058824}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.15686275}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -116446,7 +116464,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998100735}
-  m_LocalRotation: {x: -0.000009426176, y: 0.010357888, z: 0.0000004336287, w: 0.99994636}
+  m_LocalRotation: {x: -0.00000956423, y: 0.01053915, z: 0.0000004382421, w: 0.99994445}
   m_LocalPosition: {x: -0.33119702, y: 4.9919705, z: 30.038557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -116471,9 +116489,9 @@ MonoBehaviour:
   volumeController: {fileID: 1998100738}
   rotatedTransform: {fileID: 1537388633}
   maxSpeed: 100
-  accelerationForward: 10
+  accelerationForward: 0.8
   accelerationBackward: 0
-  pixetDistToDetect: 30
+  pixetDistToDetect: 2
   mGameOver: 0
   IsPlay: 1
   text_s: {fileID: 0}
@@ -116499,7 +116517,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_Position: 0
   m_MoveMode: 1
-  m_Speed: 0
+  m_Speed: 0.8
   m_Direction: 0
   m_Clamping: 0
   m_PlayAutomatically: 0
@@ -119831,7 +119849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060724916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -870.9, y: 0.3, z: 603.4}
+  m_LocalPosition: {x: -832, y: 0.3, z: 605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 98034804}
@@ -125950,6 +125968,7 @@ MonoBehaviour:
   car_Id: 0
   VL_Controller: {fileID: 0}
   pos_Board: []
+  opposit_Cars: []
 --- !u!1 &919132147985879490
 GameObject:
   m_ObjectHideFlags: 0
@@ -125985,6 +126004,7 @@ MonoBehaviour:
   car_Id: 3
   VL_Controller: {fileID: 0}
   pos_Board: []
+  opposit_Cars: []
 --- !u!65 &919132147985879492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126054,6 +126074,11 @@ MonoBehaviour:
   - {fileID: 1301876380}
   - {fileID: 860805910}
   - {fileID: 1773636627}
+  opposit_Cars:
+  - {fileID: 1655736797}
+  - {fileID: 869374343}
+  - {fileID: 893644612}
+  - {fileID: 1998100735}
 --- !u!65 &919132148232316556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126082,7 +126107,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &919132149427515044
 GameObject:
   m_ObjectHideFlags: 0
@@ -126123,6 +126148,11 @@ MonoBehaviour:
   - {fileID: 487889801}
   - {fileID: 1906740343}
   - {fileID: 508193370}
+  opposit_Cars:
+  - {fileID: 1655736797}
+  - {fileID: 1533511837}
+  - {fileID: 893644612}
+  - {fileID: 1998100735}
 --- !u!1 &974755628186051924
 GameObject:
   m_ObjectHideFlags: 0

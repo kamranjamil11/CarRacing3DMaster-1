@@ -52,8 +52,8 @@ namespace FluffyUnderware.Curvy.Examples
                 if (!RollTo) transform.LookAt (LookAt);
                 else transform.LookAt (LookAt, Vector3.SmoothDamp(transform.up, RollTo.up, ref mRollVelocity, ChaseTime));
             }
-            // if (RollTo)
-            //     transform.rotation = Quaternion.Euler (new Vector3 (transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, RollTo.rotation.eulerAngles.z));
+            //if (RollTo)
+            //    transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, RollTo.rotation.eulerAngles.z));
         }
     }
 }

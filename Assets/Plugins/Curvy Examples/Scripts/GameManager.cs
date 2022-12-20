@@ -11,7 +11,8 @@ using FluffyUnderware.Curvy.Examples;
 public class GameManager : MonoBehaviour
 {
     public AudioSource music_Audio;
-    public Text speep_Text, totalCash_Text;
+    public Text level_Text,speep_Text,level_Cash;
+    public Text[] totalCash_Text;
     public Image level_Value;
     public VolumeControllerInput player_Controller;
     public GameObject next_Panel, gamePlay_Panel,paus_Panel, setting_Panel;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] ai_Cars;
     public Levels[] levels;
     public bool isMusic;
+    public bool isComplete;
     public static int CarPos_Counter;
     public static GameManager instance;
 
@@ -34,7 +36,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isComplete = false;
+        CarPos_Counter = 0;
         int lvl_Num = PlayerPrefs.GetInt("LevelID");
+        
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].level.SetActive(false);
@@ -46,7 +51,11 @@ public class GameManager : MonoBehaviour
             ai_Cars[i].GetComponent<SplineController>().Spline= levels[lvl_Num].ai_Cars_Path[i].GetComponent<CurvySpline>();
         }
         paus_Panel.SetActive(true);
-      
+        int total_Cash = PlayerPrefs.GetInt("TOTALCASH");      
+        totalCash_Text[0].text = total_Cash.ToString();
+        int lvl = lvl_Num;
+        lvl++;
+        level_Text.text = "Level " + lvl.ToString();
     }
     public void Setting(bool isActive)
     {
@@ -116,11 +125,27 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
         next_Panel.SetActive(true);
+        int total_Cash = PlayerPrefs.GetInt("TOTALCASH");
+        int lvl_Num = PlayerPrefs.GetInt("LevelID");
+        int lvl_Cash= levels[lvl_Num].cash[CarPos_Counter];
+        level_Cash.text = lvl_Cash.ToString();
+        total_Cash += lvl_Cash;        
+        totalCash_Text[0].text = total_Cash.ToString();
+        totalCash_Text[1].text = total_Cash.ToString();
+        PlayerPrefs.SetInt("TOTALCASH", total_Cash);
+        print("total_Cash"+ total_Cash);
     }
     public void NextLevel()
     {
         int lvl_Num=  PlayerPrefs.GetInt("LevelID");
-        lvl_Num++;
+        if (lvl_Num < 2)
+        {
+            lvl_Num++;
+        }
+        else 
+        {
+            lvl_Num = 0;
+        }
         PlayerPrefs.SetInt("LevelID", lvl_Num);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
