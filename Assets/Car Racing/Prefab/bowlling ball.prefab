@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3540966335956184954}
   - component: {fileID: 537377950270792005}
   - component: {fileID: 2153044054172842449}
+  - component: {fileID: 3285289372079342390}
   m_Layer: 9
   m_Name: bowlling ball
   m_TagString: Finish
@@ -49,7 +50,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &2153044054172842449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,9 +60,23 @@ BoxCollider:
   m_GameObject: {fileID: 802914842440858928}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.3, z: 0.1}
+  m_Center: {x: 0, y: -0.02, z: 0}
+--- !u!136 &3285289372079342390
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802914842440858928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 0.32
+  m_Direction: 1
   m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!1 &964264634144678705
 GameObject:

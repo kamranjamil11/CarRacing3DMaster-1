@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject sound_ON, sound_Off;
     public GameObject music_ON, music_Off;
     public GameObject player_Path_Controller;
+    public GameObject lvl_Comp_Particls;
     public GameObject[] ai_Cars;
     public Levels[] levels;
     public bool isMusic;
@@ -149,12 +150,19 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("LevelID", lvl_Num);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void EndEffect()
+    {
+        int lvl_Num = PlayerPrefs.GetInt("LevelID");
+        lvl_Comp_Particls.transform.position= levels[lvl_Num].effect_Pos.transform.position;
+        lvl_Comp_Particls.SetActive(true);
+    }
 }
 [System.Serializable]
 public class Levels 
 {
     public string name;  
     public GameObject level;
+    public GameObject effect_Pos;
     public GameObject player_Path;
     public int[] cash;
     public GameObject[] ai_Cars_Path;

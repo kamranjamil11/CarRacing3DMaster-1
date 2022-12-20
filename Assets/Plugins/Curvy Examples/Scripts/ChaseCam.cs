@@ -23,9 +23,9 @@ namespace FluffyUnderware.Curvy.Examples
 
         Vector3 mVelocity;
         Vector3 mRollVelocity;
-
+       
 #if UNITY_EDITOR
-        void Update()
+        void FixedUpdate()
         {
             if (!Application.isPlaying)
             {

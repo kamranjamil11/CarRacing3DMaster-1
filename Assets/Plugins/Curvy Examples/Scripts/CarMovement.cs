@@ -62,6 +62,7 @@ namespace FluffyUnderware.Curvy.Examples
                 VL_Input.car_Sound.enabled = false;
                 print("Collide");
                 VL_Input.mGameOver = true;
+                GameManager.instance.EndEffect();
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 main_Camera.GetComponent<ChaseCam>().enabled = false;
