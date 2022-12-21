@@ -19,7 +19,7 @@ namespace FluffyUnderware.Curvy.Examples
     {
       //  public TrackPoint track_Point;
         public float AngularVelocity = 0.2f;
-        public ParticleSystem explosionEmitter;
+        public ParticleSystem explosionEmitter,hit_Effect;
         public VolumeController volumeController;
         public Transform rotatedTransform;
         public float maxSpeed = 40f;
@@ -37,6 +37,7 @@ namespace FluffyUnderware.Curvy.Examples
         public Vector3 rot;
         bool isLeftRot, isRightRot;
         public CarMovement car_Movement;
+        public GameObject car;
         public AudioSource car_Sound;
         private void Awake()
         {
@@ -81,7 +82,8 @@ namespace FluffyUnderware.Curvy.Examples
                // car_Sound.enabled = true;
                 GameManager.instance.PausePanel();
             }
-        }       
+        }
+        bool isRotate;
         public void Drag()
         {
            // if (!mGameOver)
@@ -89,52 +91,59 @@ namespace FluffyUnderware.Curvy.Examples
                 if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
                 {
                     // print("right_Drag");
-                    X_POS = 1f;
-                    StartCoroutine(RotationEnd(true));
-                }
-                else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
-                {
-                    X_POS = -1f;
-                    StartCoroutine(RotationEnd(false));
-                    // print("Left_Drag");
-                }
-           // }
-        }
-       
-        IEnumerator RotationEnd(bool isTrue)
-        {
-            if (isTrue)
-            {
+                    X_POS = 0.7f;
                 if (!isRightRot)
                 {
                     isRightRot = true;
-                    X_rot = 0.5f;
-                    //while (X_rot<0.5)
-                    //{
-                    //    X_rot += 0.0000001f;
-                    //}
-                    rot = new Vector3(X_rot, 1, 0);
-                    yield return new WaitForSeconds(0.5f);
-                    rot = new Vector3(0, 1, 0);
-                    yield return new WaitForSeconds(0.5f);
-                    isRightRot = false;
+                    RotationEnd(true);
+                    
                 }
-            }
-            else 
-            {
+                }
+                else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
+                {
+                    X_POS = -0.7f;
                 if (!isLeftRot)
                 {
                     isLeftRot = true;
-                    X_rot = -0.5f;
-                    //while (X_rot > -0.5)
-                    //{
-                    //    X_rot -= 0.0000001f;
-                    //}
-                    rot = new Vector3(X_rot, 1, 0);
-                    yield return new WaitForSeconds(0.5f);
-                    rot = new Vector3(0, 1, 0);
-                    yield return new WaitForSeconds(0.5f);
-                    isLeftRot = false;
+                    RotationEnd(false);
+                }
+            }
+           // print("isRotate " + isRotate);
+            // }
+        }
+       
+        void RotationEnd(bool isTrue)
+        {
+            if (isTrue)
+            {
+                if (car.transform.localRotation.y<=10f)
+                {                 
+                    rot = new Vector3(0,10, 0);               
+                    car.transform.DOLocalRotate(rot,0.5f,RotateMode.Fast).OnComplete(delegate 
+                    {
+                        rot = new Vector3(0,0, 0);
+                        car.transform.DOLocalRotate(rot,0.5f, RotateMode.Fast).OnComplete(delegate
+                        {
+                            isRightRot = false;                          
+                        });
+                    });
+                  
+                }
+            }
+            else
+            {
+                if (car.transform.localRotation.y >= -10f)
+                {
+                    rot = new Vector3(0, -10, 0);
+                    car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
+                    {
+                        rot = new Vector3(0, 0, 0);
+                        car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
+                        {
+                            isLeftRot = false;
+                        });
+                    });
+
                 }
             }
         }
@@ -165,8 +174,8 @@ namespace FluffyUnderware.Curvy.Examples
                     if (rotatedTransform)
                     {
                         //print("input " + input);
-                        //float yTarget = Mathf.Lerp(-50f, 50f, (rot.x + 1f) / 2f);
-                        //rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
+                        //float yTarget = Mathf.Lerp(-50f, 50f, (rot.x + 1f) /2f);
+                       // rotatedTransform.localRotation = Quaternion.Euler(0f, yTarget, 0f);
                     }
                     
                    

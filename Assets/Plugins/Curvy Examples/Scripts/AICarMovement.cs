@@ -5,17 +5,18 @@ using FluffyUnderware.Curvy.Examples;
 using FluffyUnderware.Curvy.Controllers;
 public class AICarMovement : MonoBehaviour
 {
-    public SplineController sp_Controller; 
+    public SplineController sp_Controller;
+    public ParticleSystem explosionEmitter;
     Rigidbody rig_Car;
     public int car_Id;
     public VolumeControllerInput VL_Controller;
     public GameObject[] pos_Board;
     public GameObject[] opposit_Cars;
-    bool isTrue,isOtherCar;
+    bool isTrue, isOtherCar;
     int pos_Counter;
     private void Start()
     {
-        rig_Car= gameObject.GetComponent<Rigidbody>();
+        rig_Car = gameObject.GetComponent<Rigidbody>();
         StartCoroutine(PosUpdate());
         //StartCoroutine(OppositCarUpdate());
     }
@@ -53,11 +54,11 @@ public class AICarMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (gameObject.name == "car_3")
         {
-            for (int i = 0; i < opposit_Cars.Length-1; i++)
+            for (int i = 0; i < opposit_Cars.Length - 1; i++)
             {
                 //if (1 != 3)
                 //{
-                    AICarMovement other = opposit_Cars[i].transform.GetChild(0).GetComponent<AICarMovement>();
+                AICarMovement other = opposit_Cars[i].transform.GetChild(0).GetComponent<AICarMovement>();
                 //}
                 //else 
                 //{
@@ -123,7 +124,7 @@ public class AICarMovement : MonoBehaviour
     }
     public void SpeedExceed(float speed)
     {
-        sp_Controller.Speed = sp_Controller.Speed+ speed;
+        sp_Controller.Speed = sp_Controller.Speed + speed;
     }
     public void ReachedPoint()
     {
@@ -136,9 +137,14 @@ public class AICarMovement : MonoBehaviour
             GameManager.instance.isComplete = true;
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                    
+
         }
-       
-    }
+        else if (other.gameObject.CompareTag("Hurdle"))
+        {
+          //  SoundManager.instance.PlaySound(0);
+            explosionEmitter.Emit(200);
+            sp_Controller.Trigger();
+        }
+    }    
 }
 //public enum CarNum { car1, car2, car3, car4 };

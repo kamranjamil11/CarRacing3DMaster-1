@@ -1050,6 +1050,9 @@ namespace FluffyUnderware.Curvy.Controllers
         /*! \endcond */
 
         #endregion
-
+        public void Trigger()
+        {        
+           RelativePosition = RelativePosition - 0.05f;       
+        }
     }
 }
