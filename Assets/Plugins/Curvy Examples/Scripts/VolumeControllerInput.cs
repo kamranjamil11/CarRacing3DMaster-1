@@ -85,31 +85,26 @@ namespace FluffyUnderware.Curvy.Examples
         }
         bool isRotate;
         public void Drag()
-        {
-           // if (!mGameOver)
-           // {
-                if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
-                {
-                    // print("right_Drag");
-                    X_POS = 0.7f;
+        {          
+            if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
+            {
+                // print("right_Drag");
+                X_POS = 0.7f;
                 if (!isRightRot)
                 {
                     isRightRot = true;
                     RotationEnd(true);
-                    
                 }
-                }
-                else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
-                {
-                    X_POS = -0.7f;
+            }
+            else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
+            {
+                X_POS = -0.7f;
                 if (!isLeftRot)
                 {
                     isLeftRot = true;
                     RotationEnd(false);
                 }
-            }
-           // print("isRotate " + isRotate);
-            // }
+            }          
         }
        
         void RotationEnd(bool isTrue)
@@ -124,7 +119,10 @@ namespace FluffyUnderware.Curvy.Examples
                         rot = new Vector3(0,0, 0);
                         car.transform.DOLocalRotate(rot,0.5f, RotateMode.Fast).OnComplete(delegate
                         {
-                            isRightRot = false;                          
+                            car.transform.DOLocalRotate(rot, 1f, RotateMode.Fast).OnComplete(delegate
+                            {
+                                isRightRot = false;
+                            });
                         });
                     });
                   
@@ -140,7 +138,10 @@ namespace FluffyUnderware.Curvy.Examples
                         rot = new Vector3(0, 0, 0);
                         car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
                         {
-                            isLeftRot = false;
+                            car.transform.DOLocalRotate(rot,1f, RotateMode.Fast).OnComplete(delegate
+                            {
+                                isLeftRot = false;
+                            });
                         });
                     });
 
