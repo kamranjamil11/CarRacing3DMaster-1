@@ -39,6 +39,7 @@ namespace FluffyUnderware.Curvy.Examples
         public CarMovement car_Movement;
         public GameObject car;
         public AudioSource car_Sound;
+        public Vector3 lastPoint_Pos;
         private void Awake()
         {
             if (!volumeController)
@@ -48,9 +49,9 @@ namespace FluffyUnderware.Curvy.Examples
         void Start()
         {
             if (volumeController.IsReady)
-                ResetController();
+                ResetController("Hurdle");
             else
-                volumeController.OnInitialized.AddListener(arg0 => ResetController());
+                volumeController.OnInitialized.AddListener(arg0 => ResetController("Hurdle"));
         }
         public void UpAndDown(bool isTrue) 
         {
@@ -90,7 +91,7 @@ namespace FluffyUnderware.Curvy.Examples
             {
                 // print("right_Drag");
                 X_POS = 0.7f;
-                if (!isRightRot)
+                if (!isRightRot&& !isLeftRot)
                 {
                     isRightRot = true;
                     RotationEnd(true);
@@ -99,7 +100,7 @@ namespace FluffyUnderware.Curvy.Examples
             else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
             {
                 X_POS = -0.7f;
-                if (!isLeftRot)
+                if (!isLeftRot&& !isRightRot)
                 {
                     isLeftRot = true;
                     RotationEnd(false);
@@ -119,7 +120,7 @@ namespace FluffyUnderware.Curvy.Examples
                         rot = new Vector3(0,0, 0);
                         car.transform.DOLocalRotate(rot,0.5f, RotateMode.Fast).OnComplete(delegate
                         {
-                            car.transform.DOLocalRotate(rot, 1f, RotateMode.Fast).OnComplete(delegate
+                            car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
                             {
                                 isRightRot = false;
                             });
@@ -131,14 +132,14 @@ namespace FluffyUnderware.Curvy.Examples
             else
             {
                 if (car.transform.localRotation.y >= -10f)
-                {
+                {                 
                     rot = new Vector3(0, -10, 0);
                     car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
                     {
                         rot = new Vector3(0, 0, 0);
                         car.transform.DOLocalRotate(rot, 0.5f, RotateMode.Fast).OnComplete(delegate
                         {
-                            car.transform.DOLocalRotate(rot,1f, RotateMode.Fast).OnComplete(delegate
+                            car.transform.DOLocalRotate(rot,0.5f, RotateMode.Fast).OnComplete(delegate
                             {
                                 isLeftRot = false;
                             });
@@ -148,17 +149,24 @@ namespace FluffyUnderware.Curvy.Examples
                 }
             }
         }
-        private void ResetController()
+        private void ResetController(string hit_Name)
         {
             IsPlay = false;
             volumeController.Speed = 0;       
             volumeController.RelativePosition = volumeController.RelativePosition-0.02f;
              volumeController.CrossRelativePosition = 0;
-            car_Movement.transform.position = new Vector3(car_Movement.transform.position.x, car_Movement.transform.position.y+2f, car_Movement.transform.position.z);
+            if (hit_Name == "Hurdle")
+            {
+                car_Movement.transform.position = new Vector3(car_Movement.transform.position.x, car_Movement.transform.position.y + 2f, car_Movement.transform.position.z);
+            } 
+            else 
+            {
+                car_Movement.transform.localPosition = new Vector3(0,2f,0);
+            }
+           
             car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;          
         }
-
         private void Update()
         {
             if (IsPlay)
@@ -195,36 +203,21 @@ namespace FluffyUnderware.Curvy.Examples
                 StartCoroutine(SpeedTest());
             }
         }
-        public void Trigger()
+        public void Trigger(string hit_Name)
         {
             if (mGameOver == false)
             {
                 explosionEmitter.Emit(200);
                 volumeController.Pause();
-                mGameOver = true;
-                Invoke("StartOver", 1);
+                mGameOver = true;            
+                StartCoroutine(StartOver(hit_Name,lastPoint_Pos));
             }
         }
-        //public void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.CompareTag("TrackPoint"))
-        //    {
-        //        print("hit");
-        //        volumeController.Speed = 0;
-        //        //if (mGameOver == false)
-        //        //{
-        //        //    explosionEmitter.Emit(200);
-        //        //    volumeController.Pause();
-        //        //    mGameOver = true;
-        //        //    Invoke("StartOver", 1);
-        //        //}
-        //    }
-        //}
-
-        private void StartOver()
+       
+        IEnumerator StartOver(string hit_Name, Vector3 last_Pos)
         {
-
-            ResetController();
+            yield return new WaitForSeconds(1f);
+            ResetController(hit_Name);
             mGameOver = false;
         }
         public void Restart()

@@ -63,7 +63,7 @@ namespace FluffyUnderware.Curvy.Examples
                 print("Collide");
                 VL_Input.mGameOver = true;
                 GameManager.instance.EndEffect();
-                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+                gameObject.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
                 main_Camera.GetComponent<ChaseCam>().enabled = false;
                 main_Camera.gameObject.transform.DOLocalMove(new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z), 2f).OnComplete(delegate
@@ -103,12 +103,20 @@ namespace FluffyUnderware.Curvy.Examples
                 SoundManager.instance.PlaySound(0);
                 StartCoroutine(OppositCarSpeed(SC));
             }
+            else if (other.gameObject.CompareTag("Plane"))
+            {               
+                ContactPoint cp = other.contacts[0];
+                VL_Input.hit_Effect.transform.position = cp.point;
+                VL_Input.hit_Effect.Play();
+                SoundManager.instance.PlaySound(0);
+                VL_Input.Trigger("Plane");
+            }
             if (other.gameObject.CompareTag("Hurdle"))
             {
                 // print("Collide");
                 SoundManager.instance.PlaySound(0);
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                VL_Input.Trigger();
+                VL_Input.Trigger("Hurdle");
             }           
         }
         IEnumerator OppositCarSpeed(SplineController SC)

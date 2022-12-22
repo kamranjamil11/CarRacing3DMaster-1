@@ -81,19 +81,7 @@ public class AICarMovement : MonoBehaviour
                     }
                 }
             }
-
-            //for (int i = 0; i < opposit_Cars.Length-1; i++)
-            //{
-            //    AICarMovement other = opposit_Cars[i].transform.GetChild(0).GetComponent<AICarMovement>();
-            //    if (other.isOtherCar)
-            //    {
-            //        if (sp_Controller.transform.position.z < other.transform.position.z)
-            //        {
-            //            pos_Counter--;
-            //            other.isOtherCar = false;
-            //        }
-            //    }
-            //}
+        
             for (int i = 0; i < pos_Board.Length; i++)
             {
                 pos_Board[i].SetActive(false);

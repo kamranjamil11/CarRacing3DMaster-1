@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
         totalCash_Text[0].text = total_Cash.ToString();
         totalCash_Text[1].text = total_Cash.ToString();
         PlayerPrefs.SetInt("TOTALCASH", total_Cash);
+        
         print("total_Cash"+ total_Cash);
     }
     public void NextLevel()
@@ -153,8 +154,11 @@ public class GameManager : MonoBehaviour
     public void EndEffect()
     {
         int lvl_Num = PlayerPrefs.GetInt("LevelID");
-        lvl_Comp_Particls.transform.position= levels[lvl_Num].effect_Pos.transform.position;
-        lvl_Comp_Particls.SetActive(true);
+        levels[lvl_Num].effect_Pos.SetActive(true);
+        //lvl_Comp_Particls.transform.position= levels[lvl_Num].effect_Pos.transform.position;
+        //lvl_Comp_Particls.SetActive(true);
+        SoundManager.instance.PlaySound(1);
+        SoundManager.instance.PlaySound(2);
     }
 }
 [System.Serializable]

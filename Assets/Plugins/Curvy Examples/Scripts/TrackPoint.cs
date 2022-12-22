@@ -10,7 +10,7 @@ public class TrackPoint : MonoBehaviour
     public float[] aicars_Speed;//, car2_Speed, car3_Speed, car4_Speed;
     public VolumeController volumeController;
     public AICarMovement ai_Cars;
-   // private VolumeControllerInput VL_input;
+    private VolumeControllerInput VL_input;
     private void Start()
     {
        // VL_input = FindObjectOfType<VolumeControllerInput>();
@@ -30,6 +30,10 @@ public class TrackPoint : MonoBehaviour
            // print("Collide");
             AICarMovement car = other.GetComponent<AICarMovement>();
             car.SpeedExceed(aicars_Speed[car.car_Id]);
+        }
+        else if(other.gameObject.CompareTag("Player"))
+        {
+           other.GetComponent<CarMovement>().VL_Input.lastPoint_Pos= other.transform.position;
         }
     }
 }
