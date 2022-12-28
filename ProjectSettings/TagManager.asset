@@ -11,6 +11,7 @@ TagManager:
   - TrackPoint
   - Track
   - Plane
+  - Top
   layers:
   - Default
   - TransparentFX

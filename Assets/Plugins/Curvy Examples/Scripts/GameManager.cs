@@ -11,6 +11,9 @@ using FluffyUnderware.Curvy.Examples;
 public class GameManager : MonoBehaviour
 {
     public AudioSource music_Audio;
+    public AudioSource car_Audio;
+    public AudioSource sound_Audio;
+    public AudioSource[] ai_Audio;
     public Text level_Text,speep_Text,level_Cash;
     public Text[] totalCash_Text;
     public Image level_Value;
@@ -22,7 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject lvl_Comp_Particls;
     public GameObject[] ai_Cars;
     public Levels[] levels;
-    public bool isMusic;
+    public bool isMusic,isSound;
     public bool isComplete;
     public static int CarPos_Counter;
     public static GameManager instance;
@@ -75,13 +78,30 @@ public class GameManager : MonoBehaviour
     {
         if (isActive)
         {
+            isSound = true;
             sound_ON.SetActive(false);
             sound_Off.SetActive(true);
+            car_Audio.enabled = false;
+            sound_Audio.enabled = false;
+            for (int i = 0; i < ai_Audio.Length; i++)
+            {
+                ai_Audio[i].enabled = false;
+            }
         }
         else
         {
+            isSound = false;
             sound_ON.SetActive(true);
             sound_Off.SetActive(false);
+            sound_Audio.enabled = true;
+            car_Audio.enabled = true;
+            if (player_Controller.IsPlay)
+            {                
+                for (int i = 0; i < ai_Audio.Length; i++)
+                {
+                    ai_Audio[i].enabled = true;
+                }
+            }
         }
     }
     public void Music(bool isActive)
@@ -92,7 +112,7 @@ public class GameManager : MonoBehaviour
             music_ON.SetActive(false);
             music_Off.SetActive(true);
             music_Audio.gameObject.SetActive(false);
-            player_Controller.GetComponent<AudioSource>().enabled = false;
+           
         }
         else
         {
@@ -101,10 +121,7 @@ public class GameManager : MonoBehaviour
             music_Off.SetActive(false);
             music_ON.SetActive(true);
             music_Audio.gameObject.SetActive(true);
-            if (player_Controller.IsPlay)
-            {
-                player_Controller.GetComponent<AudioSource>().enabled = true;
-            }
+            
         }
     }
    
@@ -116,6 +133,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < ai_Cars.Length; i++)
         {
             ai_Cars[i].GetComponent<SplineController>().enabled = true;
+        }
+        if (!isSound)
+        {
+            for (int i = 0; i < ai_Audio.Length; i++)
+            {
+                ai_Audio[i].enabled = true;
+            }
         }
     }
     IEnumerator Play()

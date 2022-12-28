@@ -45,7 +45,7 @@ public class AICarMovement : MonoBehaviour
             }
 
             // if (gameObject.name== "CarSpeed01")
-            // print("count " + GameManager.CarPos_Counter);
+           //  print("count " + GameManager.CarPos_Counter);
             StartCoroutine(PosUpdate());
         }
     }
@@ -117,6 +117,7 @@ public class AICarMovement : MonoBehaviour
     public void ReachedPoint()
     {
         rig_Car.constraints = RigidbodyConstraints.FreezeAll;
+        sp_Controller.GetComponent<AudioSource>().enabled = false;
     }
     private void OnCollisionEnter(Collision other)
     {
