@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         paus_Panel.SetActive(true);
         int total_Cash = PlayerPrefs.GetInt("TOTALCASH");      
         totalCash_Text[0].text = total_Cash.ToString();
-        int lvl = lvl_Num;
+        int lvl = PlayerPrefs.GetInt("LevelText");
         lvl++;
         level_Text.text = "Level " + lvl.ToString();
     }
@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         int lvl_Num=  PlayerPrefs.GetInt("LevelID");
+       
         if (lvl_Num < 2)
         {
             lvl_Num++;
@@ -173,6 +174,9 @@ public class GameManager : MonoBehaviour
             lvl_Num = 0;
         }
         PlayerPrefs.SetInt("LevelID", lvl_Num);
+        int lvl_Text = PlayerPrefs.GetInt("LevelText");
+        lvl_Text++;
+        PlayerPrefs.SetInt("LevelText", lvl_Text);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void EndEffect()
