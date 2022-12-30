@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject lvl_Comp_Particls;
     public GameObject[] ai_Cars;
     public Levels[] levels;
-    public bool isMusic,isSound;
+    public bool isMusic;
     public bool isComplete;
     public static int CarPos_Counter;
     public static GameManager instance;
@@ -34,13 +34,13 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
-    //Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         isComplete = false;
         CarPos_Counter = 0;
         int lvl_Num = PlayerPrefs.GetInt("LevelID");
-
+        
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].level.SetActive(false);
@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
         player_Path_Controller.GetComponent<InputSplinePath>().Spline = levels[lvl_Num].player_Path.GetComponent<CurvySpline>();
         for (int i = 0; i < ai_Cars.Length; i++)
         {
-            ai_Cars[i].GetComponent<SplineController>().Spline = levels[lvl_Num].ai_Cars_Path[i].GetComponent<CurvySpline>();
+            ai_Cars[i].GetComponent<SplineController>().Spline= levels[lvl_Num].ai_Cars_Path[i].GetComponent<CurvySpline>();
         }
         paus_Panel.SetActive(true);
-        int total_Cash = PlayerPrefs.GetInt("TOTALCASH");
+        int total_Cash = PlayerPrefs.GetInt("TOTALCASH");      
         totalCash_Text[0].text = total_Cash.ToString();
         int lvl = lvl_Num;
         lvl++;

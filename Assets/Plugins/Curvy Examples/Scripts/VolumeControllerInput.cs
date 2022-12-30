@@ -17,9 +17,9 @@ namespace FluffyUnderware.Curvy.Examples
 {
     public class VolumeControllerInput : MonoBehaviour
     {
-        //  public TrackPoint track_Point;
+      //  public TrackPoint track_Point;
         public float AngularVelocity = 0.2f;
-        public ParticleSystem explosionEmitter, hit_Effect;
+        public ParticleSystem explosionEmitter,hit_Effect;
         public VolumeController volumeController;
         public Transform rotatedTransform;
         public float maxSpeed = 40f;
@@ -49,11 +49,11 @@ namespace FluffyUnderware.Curvy.Examples
         void Start()
         {
             if (volumeController.IsReady)
-                ResetController("none");
+                ResetController("Hurdle");
             else
-                volumeController.OnInitialized.AddListener(arg0 => ResetController("none"));
+                volumeController.OnInitialized.AddListener(arg0 => ResetController("Hurdle"));
         }
-        public void UpAndDown(bool isTrue)
+        public void UpAndDown(bool isTrue) 
         {
             start_Pos = Input.mousePosition;
             if (!mGameOver)
@@ -75,41 +75,39 @@ namespace FluffyUnderware.Curvy.Examples
                     X_POS = 0f;
                     isStop = true;
                     StartCoroutine(SpeedTest());
-                    //print("Up");
+                     //print("Up");
                 }
             }
             if (GameManager.instance.paus_Panel.activeSelf)
             {
-                // car_Sound.enabled = true;
+               // car_Sound.enabled = true;
                 GameManager.instance.PausePanel();
             }
         }
         bool isRotate;
         public void Drag()
-        {
-            if (!mGameOver)
+        {          
+            if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
             {
-                if (Input.mousePosition.x >= start_Pos.x + pixetDistToDetect)
+                // print("right_Drag");
+                X_POS = 0.7f;
+                if (!isRightRot&& !isLeftRot)
                 {
-                    X_POS = 0.7f;
-                    if (!isRightRot && !isLeftRot)
-                    {
-                        isRightRot = true;
-                        RotationEnd(true);
-                    }
-                }
-                else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
-                {
-                    X_POS = -0.7f;
-                    if (!isLeftRot && !isRightRot)
-                    {
-                        isLeftRot = true;
-                        RotationEnd(false);
-                    }
+                    isRightRot = true;
+                    RotationEnd(true);
                 }
             }
+            else if (Input.mousePosition.x <= start_Pos.x + pixetDistToDetect)
+            {
+                X_POS = -0.7f;
+                if (!isLeftRot&& !isRightRot)
+                {
+                    isLeftRot = true;
+                    RotationEnd(false);
+                }
+            }          
         }
-
+       
         void RotationEnd(bool isTrue)
         {
             if (isTrue)
@@ -159,20 +157,15 @@ namespace FluffyUnderware.Curvy.Examples
              volumeController.CrossRelativePosition = 0;
             if (hit_Name == "Hurdle")
             {
-                if(!GameManager.instance.isSound)
-                car_Movement.GetComponent<AudioSource>().enabled = true;
-                car_Movement.transform.position = new Vector3(car_Movement.transform.position.x, car_Movement.transform.position.y + 3f, car_Movement.transform.position.z);
+                car_Movement.transform.position = new Vector3(car_Movement.transform.position.x, car_Movement.transform.position.y + 2f, car_Movement.transform.position.z);
             } 
             else 
             {
-              //  print("plane");
                 car_Movement.transform.localPosition = new Vector3(0,2f,0);
-               
             }
            
             car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-           // car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
+            car_Movement.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;          
         }
         private void Update()
         {
@@ -197,10 +190,8 @@ namespace FluffyUnderware.Curvy.Examples
                    
                 }
             }
-
             GameManager.instance.level_Value.fillAmount = volumeController.RelativePosition;
             GameManager.instance.speep_Text.text = volumeController.Speed.ToString("F0");
-           // car_Movement.GetComponent<CarSound>().maxSpeed = volumeController.Speed;
         }
 
         IEnumerator SpeedTest()
@@ -213,11 +204,14 @@ namespace FluffyUnderware.Curvy.Examples
             }
         }
         public void Trigger(string hit_Name)
-        {          
+        {
+            if (mGameOver == false)
+            {
                 explosionEmitter.Emit(200);
                 volumeController.Pause();
                 mGameOver = true;            
-                StartCoroutine(StartOver(hit_Name,lastPoint_Pos));        
+                StartCoroutine(StartOver(hit_Name,lastPoint_Pos));
+            }
         }
        
         IEnumerator StartOver(string hit_Name, Vector3 last_Pos)
@@ -228,7 +222,8 @@ namespace FluffyUnderware.Curvy.Examples
         }
         public void Restart()
         {
-            SceneManager.LoadScene(1);
+
+            SceneManager.LoadScene(0);
         }
 
         //        private void JumpOrSwipe()
