@@ -17,12 +17,46 @@ namespace FluffyUnderware.Curvy.Examples
         public GameObject rt;
         public GameObject[] pos_Board;
         public GameObject[] ai_Cars;
+        public Vector3 lastPosition;
+        public VolumeController volumeController;
        // int count;
         bool isTrue;
         private void Start()
         {
             StartCoroutine(PosUpdate());
         }
+
+        float x_POS;
+        private void Update()
+        {
+            RaycastHit hit;
+           // Does the ray i ntersect any objects excluding the player layer
+            int layerMask = 1 << 14;
+
+            if (Physics.Raycast(transform.position + new Vector3(0, 10, 0), transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
+            {
+                Debug.Log("Down_Hit");
+                lastPosition = hit.point + new Vector3(0f, 0.1f, 0f);
+            }
+            //if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.TransformDirection(Vector3.left), out hit, 7f, layerMask))
+            //{
+            //    Debug.Log("Left_Hit");
+            //    x_POS = -2f;
+            //    lastPosition = hit.point + new Vector3(-5f, 0.1f, 0f);
+            //}
+            //if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), transform.TransformDirection(Vector3.right), out hit, 8f, layerMask))
+            //{
+            //    Debug.Log("Right_Hit");
+            //    x_POS = 2f;
+            //    lastPosition = hit.point + new Vector3(5f, 0.1f, 0f);
+            //}
+
+            transform.root.position = lastPosition; //new Vector3(transform.root.position.x + x_POS, lastPosition.y, transform.root.position.z);
+            //Debug.DrawRay(transform.position + new Vector3(0, 10, 0), transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
+            //Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.TransformDirection(Vector3.left) * 2, Color.red);
+            //Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.TransformDirection(Vector3.right) * 2, Color.red);
+        }
+
         IEnumerator PosUpdate()
         {
             yield return new WaitForSeconds(0.5f);
@@ -74,23 +108,15 @@ namespace FluffyUnderware.Curvy.Examples
             }
             else if (other.gameObject.CompareTag("Finish"))
             {
-                // print("Collide");
-                //other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.forward * 3);
-                //GameObject tc = other.transform.parent.parent.gameObject;
-                //if (tc.transform.childCount >= 0)
-                //{
-                //    for (int i = 0; i < tc.transform.childCount; i++)
-                //    {
-                //        tc.transform.GetChild(i).GetChild(0).GetComponent<Rigidbody>().AddForce(Vector3.forward * 2f);
-                //        tc.transform.GetChild(i).GetChild(0).GetComponent<Rigidbody>().AddForce(Vector3.up * 0.2f);
-                //    }
-                //}
+                SoundManager.instance.PlaySound(3);
+                other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * volumeController.Speed * 40f);
+                other.gameObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.up * volumeController.Speed * 10f);
             }
             else if (other.gameObject.CompareTag("Track"))
             {
                 // print("Track");
                 //  gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            }
+            }                        
             else if (other.gameObject.CompareTag("AICarCollider"))
             {
                 // print("Collide");
@@ -124,12 +150,31 @@ namespace FluffyUnderware.Curvy.Examples
             yield return new WaitForSeconds(2f);
             SC.Speed = SC.Speed -15f;
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+           if (other.gameObject.CompareTag("Top"))
+            {
+               // print("Exit_Track");
+                VL_Input.mGameOver = true;
+                volumeController.Speed = 0;
+               //// gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            }
+        }
+
         private void OnCollisionExit(Collision other)
         {
              if (other.gameObject.CompareTag("Track"))
             {
+
                // print("Track");
                 gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
+                // print("Exit_Track");
+              // volumeController.Speed = 0;
+             ////   gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+              //  gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;
+
             }
         }
     }

@@ -11,6 +11,8 @@ public class TrackPoint : MonoBehaviour
     public VolumeController volumeController;
     public AICarMovement ai_Cars;
     private VolumeControllerInput VL_input;
+    public float min_X,max_X;
+
     private void Start()
     {
        // VL_input = FindObjectOfType<VolumeControllerInput>();
@@ -33,7 +35,9 @@ public class TrackPoint : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("Player"))
         {
-           other.GetComponent<CarMovement>().VL_Input.lastPoint_Pos= other.transform.position;
+            volumeController.CrossFrom =min_X;
+            volumeController.CrossTo = max_X;
+            other.GetComponent<CarMovement>().VL_Input.lastPoint_Pos= other.transform.position;
         }
     }
 }
