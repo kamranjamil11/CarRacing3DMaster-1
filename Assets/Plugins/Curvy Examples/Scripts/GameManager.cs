@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
         int lvl = PlayerPrefs.GetInt("LevelText");
         lvl++;
         level_Text.text = "Level " + lvl.ToString();
+        HomeScreen.instance.InitializeBannerAds();
+        GoogleAdMobController.instance.RequestAndLoadInterstitialAd();
+        HomeScreen.instance.ToggleBannerVisibility();
     }
     public void Setting(bool isActive)
     {
@@ -147,6 +150,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         player_Controller.IsPlay = true;
     }
+
+    public void DoubleReward()
+    {
+        PlayerPrefs.SetInt("TOTALCASH", PlayerPrefs.GetInt("TOTALCASH") + 100);
+        Debug.Log("score rewarded");
+    }
+
+    public void OnRewardedBtnClicked()
+    {
+        Variables.isRewardedBtnClicked = true;
+        HomeScreen.instance.ShowRewardedAd();
+    }
     public void LevelComplete()
     {
         next_Panel.SetActive(true);
@@ -158,7 +173,7 @@ public class GameManager : MonoBehaviour
         totalCash_Text[0].text = total_Cash.ToString();
         totalCash_Text[1].text = total_Cash.ToString();
         PlayerPrefs.SetInt("TOTALCASH", total_Cash);
-        
+        GoogleAdMobController.instance.ShowInterstitialAd();
         print("total_Cash"+ total_Cash);
     }
     public void NextLevel()
