@@ -10,11 +10,14 @@ public class MaxUserServiceAndroid
         get { return _instance; }
     }
 
-    /// <summary>
-    /// Show the user consent dialog to the user using one from AppLovin's SDK. You should check that you actually need to show the consent dialog
-    /// by checking <see cref="SdkConfiguration.ConsentDialogState"/> in the completion block of <see cref="MaxSdkCallbacks.OnSdkInitializedEvent"/>.
-    /// Please make sure to implement the callback <see cref="MaxSdkCallbacks.OnSdkConsentDialogDismissedEvent"/>.
-    /// </summary>    
+
+    [System.Obsolete("This API has been deprecated and will be removed in a future release.")]
+    public void PreloadConsentDialog()
+    {
+        _maxUnityPluginClass.CallStatic("preloadConsentDialog");
+    }
+
+    [System.Obsolete("This API has been deprecated and will be removed in a future release.")]
     public void ShowConsentDialog()
     {
         _maxUnityPluginClass.CallStatic("showConsentDialog");

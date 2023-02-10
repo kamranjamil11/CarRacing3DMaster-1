@@ -9,10 +9,12 @@ public class LoadingScreen : MonoBehaviour
     void Start()
     {
         StartCoroutine(LoadScene());
+        HomeScreen.instance.InitializeAppOpenAd();
+        StartCoroutine(HomeScreen.instance.ShowAppOpenAdIfReady());
     }
     IEnumerator LoadScene() 
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(1);
     }
 

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject music_ON, music_Off;
     public GameObject player_Path_Controller;
     public GameObject lvl_Comp_Particls;
+    public GameObject exitPanel;
     public GameObject[] ai_Cars;
     public Levels[] levels;
     public bool isMusic,isSound;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         lvl++;
         level_Text.text = "Level " + lvl.ToString();
         HomeScreen.instance.InitializeBannerAds();
-        GoogleAdMobController.instance.RequestAndLoadInterstitialAd();
+        HomeScreen.instance.InitializeInterstitialAds();
         HomeScreen.instance.ToggleBannerVisibility();
     }
     public void Setting(bool isActive)
@@ -127,7 +128,40 @@ public class GameManager : MonoBehaviour
             
         }
     }
-   
+    public void RateUs()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.oneup.car.master.racing.games");
+    }
+
+    public void Store()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/developer?id=OneUp+Town");
+    }
+
+    public void PrivacyPolicy()
+    {
+        Application.OpenURL("http://oneupgaming.co/privacypolicy.html");
+    }
+
+    public void OpenExitPanel()
+    {
+        exitPanel.SetActive(true);
+        paus_Panel.SetActive(false);
+        HomeScreen.instance.InitializeInterstitialAds();
+        HomeScreen.instance.ShowInterstitial();
+    }
+
+    public void CloseExitPanel()
+    {
+        exitPanel.SetActive(false);
+        paus_Panel.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void PausePanel()
     {     
         paus_Panel.SetActive(false);
@@ -173,7 +207,8 @@ public class GameManager : MonoBehaviour
         totalCash_Text[0].text = total_Cash.ToString();
         totalCash_Text[1].text = total_Cash.ToString();
         PlayerPrefs.SetInt("TOTALCASH", total_Cash);
-        GoogleAdMobController.instance.ShowInterstitialAd();
+        HomeScreen.instance.InitializeInterstitialAds();
+        HomeScreen.instance.ShowInterstitial();
         print("total_Cash"+ total_Cash);
     }
     public void NextLevel()

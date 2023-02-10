@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using com.adjust.sdk;
+using System.Collections;
 
 public class HomeScreen : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HomeScreen : MonoBehaviour
     private const string RewardedInterstitialAdUnitId = "ENTER_REWARD_INTER_AD_UNIT_ID_HERE";
     private const string BannerAdUnitId = "5187b1c7aef318da";
     private const string MRecAdUnitId = "ENTER_MREC_AD_UNIT_ID_HERE";
+    public string AppOpenAdUnitId;
 
     public Button showInterstitialButton;
     public Button showRewardedButton;
@@ -57,6 +59,8 @@ public class HomeScreen : MonoBehaviour
             //InitializeRewardedInterstitialAds();
             InitializeBannerAds();
             //InitializeMRecAds();
+            InitializeAppOpenAd();
+
             
             // Initialize Adjust SDK
             AdjustConfig adjustConfig = new AdjustConfig("YourAppToken", AdjustEnvironment.Sandbox);
@@ -65,11 +69,42 @@ public class HomeScreen : MonoBehaviour
 
         MaxSdk.SetSdkKey(MaxSdkKey);
         MaxSdk.InitializeSdk();
+        
     }
+
+
+    #region AppOpen
+
+    public void InitializeAppOpenAd()
+    {
+        MaxSdkCallbacks.AppOpen.OnAdHiddenEvent += OnAppOpenDismissedEvent;
+        MaxSdk.LoadAppOpenAd(AppOpenAdUnitId);
+    }
+    public IEnumerator ShowAppOpenAdIfReady()
+    {
+        Debug.Log("appopen ad");
+        yield return new WaitForSeconds(5f);
+        if (MaxSdk.IsAppOpenAdReady(AppOpenAdUnitId))
+        {
+            Debug.Log("showing ad appopen");
+            MaxSdk.ShowAppOpenAd(AppOpenAdUnitId);
+        }
+        else
+        {
+            MaxSdk.LoadAppOpenAd(AppOpenAdUnitId);
+        }
+
+    }
+    public void OnAppOpenDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+    {
+        MaxSdk.LoadAppOpenAd(AppOpenAdUnitId);
+    }
+    #endregion
+
 
     #region Interstitial Ad Methods
 
-    public  void InitializeInterstitialAds()
+    public void InitializeInterstitialAds()
     {
         // Attach callbacks
         MaxSdkCallbacks.Interstitial.OnAdLoadedEvent += OnInterstitialLoadedEvent;
@@ -157,7 +192,7 @@ public class HomeScreen : MonoBehaviour
     }
 
     #endregion
-
+    
     #region Rewarded Ad Methods
 
     public void InitializeRewardedAds()
@@ -238,9 +273,11 @@ public class HomeScreen : MonoBehaviour
     private void OnRewardedAdDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
         // Rewarded ad is hidden. Pre-load the next ad
-        if (Variables.isRewardedBtnClicked)
+        if(Variables.isRewardedBtnClicked == true)
         {
-            GameManager.instance.DoubleReward();
+            PlayerPrefs.SetInt("Total_coins", (PlayerPrefs.GetInt("Total_coins") + 500));
+            Debug.Log("the reward that is addedd" + PlayerPrefs.GetInt("Total_coins"));
+            Variables.isRewardedBtnClicked = false;
         }
         Debug.Log("Rewarded ad dismissed");
         LoadRewardedAd();
@@ -394,7 +431,8 @@ public class HomeScreen : MonoBehaviour
         MaxSdk.CreateBanner(BannerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
 
         // Set background or background color for banners to be fully functional.
-        MaxSdk.SetBannerBackgroundColor(BannerAdUnitId, Color.black);
+        MaxSdk.SetBannerBackgroundColor(BannerAdUnitId, Color.clear);
+        MaxSdk.SetBannerExtraParameter(BannerAdUnitId, "adaptive_banner", "false");
     }
 
     public void ToggleBannerVisibility()
